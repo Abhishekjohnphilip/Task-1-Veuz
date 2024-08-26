@@ -1,30 +1,30 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//     gsap.registerPlugin(ScrollTrigger);
+document.addEventListener('DOMContentLoaded', function () {
+    gsap.registerPlugin(ScrollTrigger);
 
-//     gsap.to(".window .closed", {
-//         y: "-200%", // Moves the "closed" part up to reveal the "open" part
-//         scrollTrigger: {
-//             trigger: "#intro-windows",
-//             start: "top top",
-//             end: "bottom top",
-//             scrub: 1,
-//         }
-//     });
+    gsap.to(".window .closed", {
+        y: "-200%", // Moves the "closed" part up to reveal the "open" part
+        scrollTrigger: {
+            trigger: "#intro-windows",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+        }
+    });
 
-//     gsap.to("#intro-windows", {
-//         opacity: 0,
-//         display: "none",
-//         scrollTrigger: {
-//             trigger: "#intro-windows",
-//             start: "bottom top",
-//             end: "bottom top",
-//             scrub: 1,
-//             onEnter: () => {
-//                 gsap.to("#hero, .navbar", { display: "block", opacity: 1, duration: 1 });
-//             }
-//         }
-//     });
-// });
+    gsap.to("#intro-windows", {
+        opacity: 0,
+        display: "none",
+        scrollTrigger: {
+            trigger: "#intro-windows",
+            start: "bottom top",
+            end: "bottom top",
+            scrub: 1,
+            onEnter: () => {
+                gsap.to("#hero, .navbar", { display: "block", opacity: 1, duration: 1 });
+            }
+        }
+    });
+});
 
 
 gsap.registerPlugin(ScrollTrigger);
