@@ -2,28 +2,27 @@ body {
     font-family: Arial, sans-serif;
     color: #333;
 }
-
-.intro-windows{
-
-    height: 100vh;
-}
-
 body, html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     font-family: Arial, sans-serif;
+
 }
+
+.intro-windows{
+    height: 150vh;
+    background-color: #c8c9cb;
+}
+
 
 .container-top {
     width: 100vw;
-    /* height: 110vh; */
-    /* background: #f0f0f0; */
-    /* display: flex; */
     justify-content: center;
     align-items: center;
-    /* flex-direction: column; */
-
+    position: relative;
+    position: absolute;
+    margin-bottom: 35%;
 }
 
 .window {
@@ -74,10 +73,16 @@ body, html {
 .window-line{
     display: flex;
     justify-content: center;
-    margin-top: 25%;
+    align-items: center;
+    align-content: center;
 }
 .text-line{
-    padding-bottom: 50%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
 }
 
 
@@ -88,13 +93,7 @@ body, html {
 
 
 
-.text-2 {
-    padding-bottom: 50%;
-    opacity: 0;
-}
-
-
-.text-1 .text-2 {
+.text-1 .text-2 .text-3{
     text-align: center;
     width: 100%;
     /* position: fixed; */
@@ -107,6 +106,86 @@ body, html {
     text-align: center;
 }
 
+.vectors {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.vector-clouds,
+.vector-birds {
+    position: absolute;
+    top: 0; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.vector-clouds {
+    background-image: url('Cloud.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 200px; 
+}
+
+.vector-birds {
+    background-image: url('Birds 1.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 125px;
+}
+
+
+.circle-wrapper {
+    position: relative;
+    width: 100%;
+    height: 150vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-container {
+    position: relative;
+    width: 938px; 
+    height: 938px; 
+}
+
+.circle-container svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+}
+
+#circle5 {
+    z-index: 1;
+}
+
+#circle1 {
+    z-index: 2;
+}
+
+#circle2 {
+    z-index: 3;
+}
+
+#circle3 {
+    z-index: 4;
+}
+
+#circle4 {
+    z-index: 5;
+}
+
+
 
 #hero {
     display: none; 
@@ -117,10 +196,18 @@ body, html {
     justify-content: start;
 }
 
+/* CSS for Navbar */
 .navbar {
-    display: none;
-    /* padding: 15px; */
-    /* position: absolute; */
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: display 0.5s ease-in-out;
+}
+
+.navbar.show {
+    display: flex;
 }
 
 .navbar-brand {
@@ -171,6 +258,18 @@ body, html {
     /* padding-top: 10%; */
 }
 
+#explore {
+    position: relative;
+}
+
+.explore-vector {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15%; 
+    height: auto;
+    z-index: 1;
+}
 
 #explore h2 {
     font-size: 3.75rem;
@@ -288,50 +387,65 @@ body, html {
     color: #333;
 }
 
-footer .footer-logo {
+.footer .footer-logo {
     width: 50px;
     height: auto;
 }
 
-footer .text-secondary {
+.footer .text-secondary {
     font-size: 0.9rem;
 }
 
-footer .footer-top {
+.footer .footer-top {
     border-bottom: 1px solid #eaeaea;
 }
 
-footer .footer-bottom {
+.footer .footer-bottom {
     background-color: #333;
     color: #fff;
 }
 
-footer p {
+.footer p {
     margin: 0;
     font-size: 0.9rem;
 }
-
-
-@media only screen and (max-width: 1200px) {
+@media only screen and (min-width:1440px) {
+    .vectors{
+        top:40%;
+    }
+    .window-line{
+        margin-top: -45%;
+    }
+    .vector-birds {
+        margin-left: 15%;
+        /* margin-bottom: 5px; */
+    }
+}
+/* For laptops with screen size max-width: 1440px and height: 900px */
+@media only screen and (max-width: 1440px) and (max-height: 900px) {
+    .intro-windows{
+        height: 150vh;
+        margin-top: 0;
+    }
+    .circle-wrapper{
+        height: 100vh;
+    }
     .window {
-        width: 120px;
-        height: 160px;
+        width: 140px;
+        height: 180px;
     }
 
     .window .closed {
-        width: 100%;
-        height: 100%;
-        border-radius: 20px;
+        border-radius: 22px;
     }
 
     .window .open {
-        border-radius: 20px;
+        border-radius: 22px;
     }
 
     .window-line {
-        margin-top: 20%;
+        margin-top:-40%;
     }
-
     #hero h1 {
         font-size: 4rem;
     }
@@ -344,12 +458,110 @@ footer p {
         max-width: 600px;
     }
 
-    footer .footer-logo {
+    .footer .footer-logo {
         width: 60px;
     }
+    .container-top {
+        margin-top: 10%;
+        /* margin-bottom:  20%; */
+    }
+
+    .vectors{
+        top:30%;
+        /* left:50%; */
+        /* right: 50%; */
+    }
+    .vector-clouds {
+        width: 250px;
+        height: 170px;
+        left: 20px;
+        /* top:20% */
+    }
+
+    .vector-birds {
+        width: 200px;
+        height: 100px;
+        left: 130px;
+    }
+    .vector-clouds,
+    .vector-birds {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
 }
 
-@media only screen and (max-width: 768px) {
+
+/* For laptops with screen size max-width: 1024px and height: 768px */
+@media only screen and (max-width: 1024px) and (max-height: 768px) {
+  
+    .window {
+        width: 120px;
+        height: 160px;
+    }
+
+    .window .closed {
+        border-radius: 20px;
+    }
+
+    .window .open {
+        border-radius: 20px;
+    }
+
+    .window-line {
+        margin-top: -50%;
+    }
+    .container-top {
+        margin-top: 20%;
+        /* margin-bottom: 30%; */
+    }
+
+    .vectors{
+        top:25%;
+    }
+   
+    .vector-clouds {
+        width: 250px;
+        height: 170px;
+        /* left: 20px; */
+        /* top:20% */
+    }
+
+    .vector-birds {
+        width: 200px;
+        height: 100px;
+        /* left: 130px; */
+        margin-left: 15%;
+    }
+    .vector-clouds,
+    .vector-birds {
+        position: absolute;
+        top: 0%; 
+        left: 50%;
+        transform: translate(-50%, -50%); 
+        z-index: 9999; 
+    }
+
+}
+
+/* For tablets with screen size max-width: 768px and height: 1024px */
+@media only screen and (max-width: 768px) and (max-height: 1024px) {
+    .intro-windows{
+        height:100vh ;
+    }
+    .circle-wrapper{
+        height: 100vh;
+        /* width: 50%; */
+    }
+    #circle5 ,
+    #circle1{display: none;}
+    .circle-container{
+        width: 600px;
+        height: 600px;
+    }
+    
     .window {
         width: 100px;
         height: 130px;
@@ -364,9 +576,8 @@ footer p {
     }
 
     .window-line {
-        margin-top: 25%;
+        margin-top: -75%;
     }
-
     #hero {
         height: 100vh;
     }
@@ -382,36 +593,54 @@ footer p {
         max-width: 500px;
     }
 
-    footer .footer-top,
-    footer .footer-bottom {
+    .footer .footer-top,
+    .footer .footer-bottom {
         padding: 40px;
         text-align: left;
     }
+
+    .container-top {
+        margin-top: 10%;
+    
+    }
+    .vectors{
+        margin-top: 50%;
+    }
+    .vector-clouds {
+        width: 200px;
+        height: 150px;
+        /* left: 20px; */
+        /* top:20% */
+    }
+
+    .vector-birds {
+        width: 100px;
+        height: 100px;
+        /* left: 130px; */
+        margin-left: 15%;
+    }
+
 }
 
-@media only screen and (max-width: 480px) {
+/* For mobile devices with screen size max-width: 425px and height: 900px */
+@media only screen and (max-width: 425px) and (max-height: 900px) {
     .window {
         width: 80px;
         height: 100px;
     }
 
     .window .closed {
-        border-radius: 10px;
+        border-radius: 12px;
     }
 
     .window .open {
-        border-radius: 10px;
+        border-radius: 12px;
     }
 
     .window-line {
         margin-top: 30%;
     }
-
-    .card {
-        max-width: 400px;
-    }
-
-    footer .footer-logo {
+    .footer .footer-logo {
         width: 50px;
     }
     #hero h1 {
@@ -420,25 +649,5 @@ footer p {
 
     #hero p {
         font-size: 1.2rem;
-    }
-}
-
-
-@media only screen and (max-width: 360px) {
-    .window {
-        width: 70px;
-        height: 90px;
-    }
-
-    .window .closed {
-        border-radius: 8px;
-    }
-
-    .window .open {
-        border-radius: 8px;
-    }
-
-    .window-line {
-        margin-top: 35%;
     }
 }
